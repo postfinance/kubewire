@@ -50,12 +50,12 @@ $ kubewire snapshot > baseline.yaml
 $ ./thisdoessomemagic
 
 $ kubewire diff --baseline=baseline.yaml
-Element												                    A				                	B
-ScanStart										                	    2018-06-12 14:19:14.152560709 +0200 CEST2018-06-14 10:22:18.083728367 +0200 CEST m=+0.028297121
-ScanEnd												                    2018-06-12 14:19:42.870490496 +0200 CEST2018-06-14 10:22:46.602422832 +0200 CEST m=+28.546991607
-ResourceObjects." v1 namespaces  appl-shouldnotbehere"					does not exist			        	exists
-ResourceObjects." v1 secrets kube-system shouldnotbehere-token-rwmcl"	does not exist			        	exists
-ResourceObjects." v1 serviceaccounts kube-system shouldnotbehere"		does not exist			        	exists
+Element                                                                 A                                        B
+ScanStart                                                               2018-06-12 14:19:14.152560709 +0200 CEST 2018-06-14 10:22:18.083728367 +0200 CEST m=+0.028297121
+ScanEnd                                                                 2018-06-12 14:19:42.870490496 +0200 CEST 2018-06-14 10:22:46.602422832 +0200 CEST m=+28.546991607
+ResourceObjects." v1 namespaces  appl-shouldnotbehere"                  does not exist                           exists
+ResourceObjects." v1 secrets kube-system shouldnotbehere-token-rwmcl"   does not exist                           exists
+ResourceObjects." v1 serviceaccounts kube-system shouldnotbehere"       does not exist                           exists
 ```
 
 ### Kubeconfig
