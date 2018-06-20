@@ -24,7 +24,7 @@ var serverinfoCmd = &cobra.Command{
 			log.Fatalln(err)
 		}
 
-		fmt.Println("Host: %s, Version: %s", version.Host, version.Version)
+		fmt.Printf("Host: %s, Version: %s\n", version.Host, version.Version)
 	},
 }
 
