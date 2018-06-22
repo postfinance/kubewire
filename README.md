@@ -67,13 +67,7 @@ paths for a kubeconfig. Both cases can be overriden by setting the 'kubeconfig' 
 RBAC Rules will be provided soon
 
 ## Requirements
-This utility should work with any recent Kubernetes compatible cluster.
-
-It is known to work with:
-- Kubernetes 1.9+
-
-It is known not to work:
-- OpenShift <=3.5
+This utility should work with any Kubernetes 1.7+ compatible cluster.
 
 ## Next
 
