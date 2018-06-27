@@ -5,6 +5,10 @@ vars:
   KUBEWIRE_VERSION: '{{if .GIT_TAG}}{{.GIT_TAG}}{{else}}{{.GIT_COMMIT}}{{end}}'
 
 tasks:
+  test:
+    cmds:
+    - go test -v ./...
+
   clean:
     cmds:
     - rm -r 'dist/' || true
@@ -15,7 +19,8 @@ tasks:
       GOARCH: amd64
     cmds:
     - go build -ldflags "-X github.com/postfinance/kubewire/cmd.Version={{.KUBEWIRE_VERSION}}" -o "dist/kubewire_{{.KUBEWIRE_VERSION}}_linux_amd64" .
-    - sha256sum "dist/kubewire_{{.KUBEWIRE_VERSION}}_linux_amd64"
+    - cmd: sha256sum "dist/kubewire_{{.KUBEWIRE_VERSION}}_linux_amd64"
+      silent: true
 
   release-windows:
     env:
@@ -23,7 +28,8 @@ tasks:
       GOARCH: amd64
     cmds:
     - go build -ldflags "-X github.com/postfinance/kubewire/cmd.Version={{.KUBEWIRE_VERSION}}" -o "dist/kubewire_{{.KUBEWIRE_VERSION}}_windows_amd64.exe" .
-    - sha256sum "dist/kubewire_{{.KUBEWIRE_VERSION}}_windows_amd64.exe"
+    - cmd: sha256sum "dist/kubewire_{{.KUBEWIRE_VERSION}}_windows_amd64.exe"
+      silent: true
 
   release-darwin:
     env:
@@ -31,11 +37,13 @@ tasks:
       GOARCH: amd64
     cmds:
     - go build -ldflags "-X github.com/postfinance/kubewire/cmd.Version={{.KUBEWIRE_VERSION}}" -o "dist/kubewire_{{.KUBEWIRE_VERSION}}_darwin_amd64" .
-    - sha256sum "dist/kubewire_{{.KUBEWIRE_VERSION}}_darwin_amd64"
+    - cmd: sha256sum "dist/kubewire_{{.KUBEWIRE_VERSION}}_darwin_amd64"
+      silent: true
 
   release:
     deps: ["clean"]
     cmds:
+    - task: test
     - task: release-linux
     - task: release-windows
     - task: release-darwin
