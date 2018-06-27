@@ -7,7 +7,8 @@ import (
 	"github.com/spf13/cobra"
 )
 
-const Version = "devel"
+// Version defines the kubewire version string
+var Version = "devel"
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{

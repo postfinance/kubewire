@@ -1,0 +1,3 @@
+---
+GIT_TAG: {sh: git tag -l --points-at HEAD}
+GIT_COMMIT: {sh: git log -n 1 --format=%H}
