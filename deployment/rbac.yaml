@@ -1,0 +1,22 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: kubewire
+rules:
+- apiGroups: ["*"]
+  resources: ["*"]
+  verbs: ["list"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: kubewire
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: kubewire
+subjects:
+- kind: ServiceAccount
+  namespace: kube-system
+  name: kubewire

@@ -105,7 +105,12 @@ of the Pod if available. If this is not the case, it looks in the default kubect
 paths for a kubeconfig. Both cases can be overriden by setting the 'kubeconfig' flag.
 
 ### RBAC Rules
-RBAC Rules will be provided soon
+kubewire needs permission to list all resource objects in a Kubernetes cluster.
+It does not require to get the objects itself.
+
+An example ClusterRole and ClusterRoleBinding is provided in the [rbac.yaml](deployment/rbac.yaml) file,
+which assumes that kubewire runs in a Pod as the service account `kubewire` in the
+`kube-system` namespace.
 
 ## Requirements
 This utility should work with any Kubernetes 1.7+ compatible cluster.
@@ -114,6 +119,5 @@ This utility should work with any Kubernetes 1.7+ compatible cluster.
 
 - [ ] Scan namespaced resources with global impact e.g. PodSecurityPolicy usages
 - [ ] Add example reports
-- [ ] Provide RBAC yaml
 - [ ] Review ReportDiff format and make it more usable and readable
 - [ ] Add more tests
