@@ -1,4 +1,4 @@
-[![Go Report Card](https://goreportcard.com/badge/github.com/postfinance/kubewire)](https://goreportcard.com/badge/github.com/postfinance/kubewire)
+[![Go Report Card](https://goreportcard.com/badge/github.com/postfinance/kubewire)](https://goreportcard.com/report/github.com/postfinance/kubewire)
 [![Build Status](https://travis-ci.org/postfinance/kubewire.svg?branch=master)](https://travis-ci.org/postfinance/kubewire)
 
 # kubewire
