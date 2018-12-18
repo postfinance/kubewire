@@ -33,7 +33,7 @@ type Resource struct {
 	Name         string
 	Kind         string
 	Namespaced   bool
-	Verbs        []string
+	Listable     bool
 }
 
 // Key returns a unique identifier for the Resource which can be
@@ -73,12 +73,6 @@ func (a Resource) Compare(b interface{}) []DiffReport {
 		ans := fmt.Sprintf("%t", a.Namespaced)
 		bns := fmt.Sprintf("%t", bres.Namespaced)
 		ret = append(ret, DiffReport{Element: "Namespaced", A: ans, B: bns})
-	}
-
-	aVerbs := fmt.Sprintf("%v", a.Verbs)
-	bVerbs := fmt.Sprintf("%v", bres.Verbs)
-	if aVerbs != bVerbs {
-		ret = append(ret, DiffReport{Element: "Verbs", A: aVerbs, B: bVerbs})
 	}
 
 	if len(ret) == 0 {
