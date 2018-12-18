@@ -36,6 +36,11 @@ type Resource struct {
 	Listable     bool
 }
 
+// String returns a human readable string for this resource
+func (a Resource) String() string {
+	return fmt.Sprintf("%s %s/%s", a.GroupVersion, a.Kind, a.Name)
+}
+
 // Key returns a unique identifier for the Resource which can be
 // used for sorting
 func (a Resource) Key() string {
@@ -98,6 +103,11 @@ func (a ResourceObject) Key() string {
 	// rune wise string comparison
 	group, version := SplitGroupVersionSafe(a.GroupVersion)
 	return fmt.Sprintf("%s %s %s %s %s", group, version, a.Resource, a.Namespace, a.Name)
+}
+
+// String returns a human readable key
+func (a ResourceObject) String() string {
+	return fmt.Sprintf("%s %s/%s/%s", a.GroupVersion, a.Resource, a.Namespace, a.Name)
 }
 
 // Compare compares two ResourceObjects, while b must be a ResourceObject or else it will panic

@@ -17,6 +17,7 @@ func (r DiffReport) String() string {
 // Keyer defines an interface which can uniquely identify and compare types
 // together in order to diff them
 type Keyer interface {
+	String() string
 	Key() string
 	Compare(b interface{}) []DiffReport
 }
@@ -64,14 +65,14 @@ func DiffReports(a Report, b Report) []DiffReport {
 	// Resources
 	cmp := Diff(resourcesToKeyer(a.Resources), resourcesToKeyer(b.Resources))
 	if len(cmp) != 0 {
-		AnnotateDiffReports(cmp, "Resources.")
+		AnnotateDiffReports(cmp, "Resource ")
 		ret = append(ret, cmp...)
 	}
 
 	// ResourceObject
 	cmp = Diff(resourceobjectsToKeyer(a.ResourceObjects), resourceobjectsToKeyer(b.ResourceObjects))
 	if len(cmp) != 0 {
-		AnnotateDiffReports(cmp, "ResourceObjects.")
+		AnnotateDiffReports(cmp, "ResourceObject ")
 		ret = append(ret, cmp...)
 	}
 
@@ -103,9 +104,9 @@ func rangeDiff(x []Keyer, start int, end int, a bool) []DiffReport {
 	ret := []DiffReport{}
 	for _, v := range x[start:end] {
 		if a {
-			ret = append(ret, DiffReport{Element: "\"" + v.Key() + "\"", A: "exists", B: "does not exist"})
+			ret = append(ret, DiffReport{Element: v.String(), A: "exists", B: "does not exist"})
 		} else {
-			ret = append(ret, DiffReport{Element: "\"" + v.Key() + "\"", B: "exists", A: "does not exist"})
+			ret = append(ret, DiffReport{Element: v.String(), B: "exists", A: "does not exist"})
 		}
 	}
 
